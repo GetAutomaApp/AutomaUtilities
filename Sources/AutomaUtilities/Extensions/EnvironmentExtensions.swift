@@ -10,7 +10,7 @@ public extension Environment {
         guard
             let value = get(key)
         else {
-            throw Abort(.internalServerError, reason: "Value for key \(key) not found")
+            throw AutomaGenericErrors.notFound(message: "Environment variable value for key '\(key)' not found.")
         }
         return value
     }
