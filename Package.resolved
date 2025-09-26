@@ -1,5 +1,5 @@
 {
-  "originHash" : "bd491e5c532de67aafd11413f24a1678b513d76bb7c4aec3bc062ddc6a43442e",
+  "originHash" : "b7a8852be53bc29f3edab2871c5be33c605d416d258ee11cd1c3a4351dcc6251",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -206,6 +206,15 @@
       "state" : {
         "revision" : "bbadd4b853a33fd78c4ae977d17bb2af15eb3f2a",
         "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "swift-prometheus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-server/swift-prometheus.git",
+      "state" : {
+        "revision" : "8a8ff47403444e16d8cdfa805a5e3cb8e2efe734",
+        "version" : "2.2.0"
       }
     },
     {

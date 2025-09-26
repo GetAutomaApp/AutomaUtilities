@@ -7,8 +7,9 @@ import Vapor
 
 public enum AutomaGenericErrors: Error, Equatable {
     case invalidURL(url: String, reason: InvalidURLReason? = nil)
-    case notFound(message: String)
     case guardFailed(message: String)
+    case notFound(message: String)
+    case discordWebHookMessageFailed
 
     public enum InvalidURLReason: Equatable, Sendable {
         case invalidScheme(scheme: String, reason: String)
