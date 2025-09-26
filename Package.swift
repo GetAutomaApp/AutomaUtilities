@@ -17,6 +17,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.115.0"),
+        .package(url: "https://github.com/swift-server/swift-prometheus.git", from: "2.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -25,11 +26,15 @@ let package = Package(
             name: "AutomaUtilities",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
+                .product(name: "Prometheus", package: "swift-prometheus"),
             ]
         ),
         .testTarget(
             name: "AutomaUtilitiesTests",
-            dependencies: ["AutomaUtilities"]
+            dependencies: [
+                .target(name: "AutomaUtilities"),
+                .product(name: "VaporTesting", package: "vapor"),
+            ]
         ),
     ]
 )
