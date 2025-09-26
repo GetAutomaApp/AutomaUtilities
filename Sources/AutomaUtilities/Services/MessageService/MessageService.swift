@@ -6,8 +6,10 @@
 import Foundation
 import Vapor
 
-public struct MessageService: Decodable, Sendable {
-    public func sendWebhookMessage(
+public struct MessageService {
+    public init() {}
+
+    public static func sendWebhookMessage(
         webhookURL: URL,
         message: DiscordWebhookMessage,
         logger: Logger
@@ -38,7 +40,7 @@ public struct MessageService: Decodable, Sendable {
         }
     }
 
-    private func buildWebhookRequest(url: URL, message: DiscordWebhookMessage) throws -> URLRequest {
+    private static func buildWebhookRequest(url: URL, message: DiscordWebhookMessage) throws -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -46,7 +48,7 @@ public struct MessageService: Decodable, Sendable {
         return request
     }
 
-    private func validateWebhookResponse(_ response: URLResponse, data _: Data) throws {
+    private static func validateWebhookResponse(_ response: URLResponse, data _: Data) throws {
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 204 {
             throw AutomaGenericErrors.discordWebHookMessageFailed
         }
@@ -64,7 +66,7 @@ public struct MessageService: Decodable, Sendable {
         }
 
         Task.detachedLogOnError(destination: "MessageService.sendDiscordWebhookAppEvent", logger: logger) {
-            try await sendWebhookMessage(
+            try await MessageService.sendWebhookMessage(
                 webhookURL: url,
                 message: MessageFormatterService.craftUserEventDiscordWebhookMessage(
                     input: input,
