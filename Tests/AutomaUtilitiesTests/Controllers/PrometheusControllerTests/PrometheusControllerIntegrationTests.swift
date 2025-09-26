@@ -7,9 +7,6 @@
 import Testing
 import VaporTesting
 
-// Since most prometheus implementation code (MetricsService and PrometheusController) will be re-used,
-// the prometheus tests can placed in the package that contains the implementation code
-
 /// Integration tests for the `PrometheusController`.
 /// These tests verify the controller's ability to handle requests and return metrics data.
 @Suite("PrometheusControllerIntegrationTests")
