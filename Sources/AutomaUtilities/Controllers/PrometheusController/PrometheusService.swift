@@ -8,7 +8,10 @@ import Prometheus
 import Vapor
 
 public struct PrometheusService {
-    public func startServer() async throws {
+    public init() {}
+
+    @discardableResult
+    public func startServer() async throws -> FlyingFox.HTTPServer {
         let metricsServerPort = UInt16(6_834)
         var server = HTTPServer(port: metricsServerPort)
         await registerServerRoutes(server: &server)
@@ -16,6 +19,7 @@ public struct PrometheusService {
             try await server.run()
         }
         try await server.waitUntilListening()
+        return server
     }
 
     private func registerServerRoutes(server: inout FlyingFox.HTTPServer) async {
