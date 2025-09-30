@@ -14,8 +14,7 @@ public struct MessageService {
         message: DiscordWebhookMessage,
         logger: Logger
     ) async throws {
-        // TODO: make metric a backend metric and backendmetric in infracore infracorebackendmetric
-        // BackendMetric.totalDiscordWebhookMessagesSent.increment()
+        AutomaUtilitiesMetric.totalDiscordWebhookMessagesSent.increment()
 
         guard try Environment.getOrThrow("ENVIRONMENT") != "local" else { return }
 
