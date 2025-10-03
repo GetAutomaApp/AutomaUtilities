@@ -10,6 +10,8 @@ public enum AutomaGenericErrors: Error, Equatable {
     case guardFailed(message: String)
     case notFound(message: String)
     case discordWebHookMessageFailed
+    case httpClientRequestFailed(requestDescription: String, error: String)
+    case decodeResponseContentFailed(contentType: String, error: String)
 
     public enum InvalidURLReason: Equatable, Sendable {
         case invalidScheme(scheme: String, reason: String)
