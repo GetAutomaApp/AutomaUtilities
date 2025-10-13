@@ -6,8 +6,8 @@
 import Vapor
 
 public struct AutomaWebCoreAPIEndpointPayload: Content {
-    let url: URL
-    let scrollToBottom: Bool
+    public let url: URL
+    public let scrollToBottom: Bool
 
     public init(from decoder: any Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
