@@ -11,8 +11,8 @@ public struct PrometheusService {
     public init() {}
 
     @discardableResult
-    public func startServer() async throws -> FlyingFox.HTTPServer {
-        let metricsServerPort = UInt16(6_834)
+    public func startServer(port: UInt16 = 6_834) async throws -> FlyingFox.HTTPServer {
+        let metricsServerPort = UInt16(port)
         var server = HTTPServer(port: metricsServerPort)
         await registerServerRoutes(server: &server)
         Task {
