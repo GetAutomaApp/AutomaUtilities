@@ -23,7 +23,7 @@ public struct PrometheusService {
     }
 
     private func registerServerRoutes(server: inout FlyingFox.HTTPServer) async {
-        await server.appendRoute("/metrics") { _ in
+        await server.appendRoute("metrics") { _ in
             guard
                 let metrics = String(data: MetricsService.global.emit(), encoding: .utf8)
             else {
@@ -42,7 +42,11 @@ public struct PrometheusService {
                         message: "Could not convert metrics string '\(metrics)' to type `Data`."
                     )
             }
-            return .init(statusCode: .ok, body: .init(data: data))
+            return .init(
+                statusCode: .ok,
+                headers: [.contentType: "text/plain; version=0.0.4; charset=utf-8; escaping=underscores"],
+                body: .init(data: data),
+            )
         }
     }
 }
