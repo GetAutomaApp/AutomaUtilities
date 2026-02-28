@@ -1,5 +1,5 @@
 {
-  "originHash" : "d798d15e75302b8c096d007fb161142b2530e1c8978155fc507990ed36a6f4f6",
+  "originHash" : "36cff339e08c274ca0fd7ad8b9df6c88f8fa53e449fb051f830967cf9030701c",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -38,15 +38,6 @@
       }
     },
     {
-      "identity" : "grpc-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/grpc/grpc-swift.git",
-      "state" : {
-        "revision" : "f857994e146f5146d702e9c31ac6f3c27d55d18a",
-        "version" : "1.27.0"
-      }
-    },
-    {
       "identity" : "multipart-kit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/multipart-kit.git",
@@ -58,10 +49,10 @@
     {
       "identity" : "opentelemetry-swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/open-telemetry/opentelemetry-swift.git",
+      "location" : "https://github.com/getautomaapp/opentelemetry-swift.git",
       "state" : {
-        "revision" : "df57cc4fd0b4cf4f9d715253c6aaba4b6912f7e0",
-        "version" : "2.3.0"
+        "branch" : "main",
+        "revision" : "5e2bf0a6b298fb25ad54564055c9e32d13fece62"
       }
     },
     {

@@ -21,8 +21,8 @@ let package = Package(
         .package(url: "https://github.com/swhitty/FlyingFox.git", .upToNextMajor(from: "0.25.0")),
         .package(url: "https://github.com/swift-server/async-http-client.git", from: "1.9.0"),
         .package(
-            url: "https://github.com/open-telemetry/opentelemetry-swift.git",
-            exact: "2.3.0"),
+            url: "https://github.com/getautomaapp/opentelemetry-swift.git",
+            branch: "main"),
         .package(
             url: "https://github.com/open-telemetry/opentelemetry-swift-core.git",
             exact: "2.3.0"),
