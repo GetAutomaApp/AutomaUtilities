@@ -10,13 +10,32 @@ import OpenTelemetrySdk
 import OpenTelemetryProtocolExporterHttp
 
 public enum TracingService {
+    private final class Locked<Value>: @unchecked Sendable {
+        private var value: Value
+        private let lock = NSLock()
+
+        init(_ value: Value) {
+            self.value = value
+        }
+
+        func withLock<T>(_ body: (inout Value) -> T) -> T {
+            lock.lock()
+            defer { lock.unlock() }
+            return body(&value)
+        }
+
+        func get() -> Value {
+            withLock { $0 }
+        }
+    }
+
     private enum Keys {
         static let endpoint = "GRAFANA_TEMPO_OTLP_ENDPOINT"
         static let instanceId = "GRAFANA_TEMPO_INSTANCE_ID"
         static let apiKey = "GRAFANA_TEMPO_API_KEY"
     }
 
-    private static var registeredTracerProvider: TracerProvider?
+    private static let registeredTracerProvider = Locked<TracerProvider?>(nil)
 
     /// Configures an OpenTelemetry tracer provider that exports spans to Grafana Tempo.
     /// - Parameter serviceName: The service.name resource attribute that Tempo uses for grouping.
@@ -51,20 +70,20 @@ public enum TracingService {
             .build()
 
         OpenTelemetry.registerTracerProvider(tracerProvider: tracerProvider)
-        registeredTracerProvider = tracerProvider
+        registeredTracerProvider.withLock { $0 = tracerProvider }
         return tracerProvider
     }
 
     /// Shuts down the configured tracer provider, giving exporters a chance to flush.
     /// Safe to call multiple times.
     public static func shutdownTracing(timeout: TimeInterval? = nil) {
-        guard let provider = registeredTracerProvider ?? OpenTelemetry.instance.tracerProvider,
+        guard let provider = registeredTracerProvider.get(),
               let sdkProvider = provider as? TracerProviderSdk else {
             return
         }
 
         sdkProvider.forceFlush(timeout: timeout)
         sdkProvider.shutdown()
-        registeredTracerProvider = nil
+        registeredTracerProvider.withLock { $0 = nil }
     }
 }
