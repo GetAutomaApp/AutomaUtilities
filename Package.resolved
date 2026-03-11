@@ -1,5 +1,5 @@
 {
-  "originHash" : "36cff339e08c274ca0fd7ad8b9df6c88f8fa53e449fb051f830967cf9030701c",
+  "originHash" : "7faaaa1a120bfc975f5e2c671dac90736e394551c7fef6add0540cd17fd88f9b",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -35,6 +35,33 @@
       "state" : {
         "revision" : "de38230104cf63ef4843cb569ba11c13f8165685",
         "version" : "0.26.2"
+      }
+    },
+    {
+      "identity" : "grpc-swift-2",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/grpc/grpc-swift-2.git",
+      "state" : {
+        "revision" : "531924b28fde0cf7585123c781c6f55cc35ef7fc",
+        "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "grpc-swift-nio-transport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/grpc/grpc-swift-nio-transport.git",
+      "state" : {
+        "revision" : "9ed6c16a4c1619520cf8dd72f8ee0058b1103749",
+        "version" : "2.4.3"
+      }
+    },
+    {
+      "identity" : "grpc-swift-protobuf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/grpc/grpc-swift-protobuf.git",
+      "state" : {
+        "revision" : "19153231a03c2fda1f4ea60da1b92a2cb9c011d8",
+        "version" : "2.2.0"
       }
     },
     {
@@ -254,6 +281,15 @@
       }
     },
     {
+      "identity" : "swift-otel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-otel/swift-otel.git",
+      "state" : {
+        "revision" : "b5f4d8b3ec75c63bf85526b6ff3789b6de0d54a1",
+        "version" : "1.0.4"
+      }
+    },
+    {
       "identity" : "swift-prometheus",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-server/swift-prometheus.git",
@@ -296,6 +332,15 @@
       "state" : {
         "revision" : "7c6ad0fc39d0763e0b699210e4124afd5041c5df",
         "version" : "1.6.4"
+      }
+    },
+    {
+      "identity" : "swift-w3c-trace-context",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-otel/swift-w3c-trace-context.git",
+      "state" : {
+        "revision" : "5da9b143ba6046734de3fa51dafea28290174e4e",
+        "version" : "1.0.0-beta.5"
       }
     },
     {
